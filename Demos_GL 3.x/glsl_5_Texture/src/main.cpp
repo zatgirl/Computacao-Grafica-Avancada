@@ -22,10 +22,14 @@
 
 #define RECT_SIZE 10
 
+int u_mode = 0;
+
 //variaveis uniform
 GLint loc_u_texture_0;  //local da variavel texture do arquivo tex.frag
 GLint loc_u_texture_1;  //local da variavel texture do arquivo tex.frag
 GLint loc_u_bright;     //local da variavel bright do arquivo tex.frag
+GLint loc_u_dimension;
+GLint loc_u_mode;
 
 float brilho = 0;
 
@@ -63,7 +67,6 @@ void init_gl(void)
    }
    //glEnable(GL_TEXTURE);
    //glEnable(GL_TEXTURE_2D);
-
    glGenTextures( 1, &tex1 );
    glBindTexture( GL_TEXTURE_2D, tex1 );
    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
@@ -103,12 +106,14 @@ void display(void)
    glLoadIdentity();
 
    //muda a intensidade da cor de cada pixel por uma senoide no intervalo [0.2, 4.2]
-   float valor = (sin(brilho+=0.01)+1.1)*2.0;
+   float valor = (sin(brilho+=0.01))*1.0;
    int texture = (valor>0.5)? 0:1;
 
    glUniform1f(loc_u_bright, valor);
    glUniform1i(loc_u_texture_0, 0);
    glUniform1i(loc_u_texture_1, 1);
+   glUniform1i(loc_u_dimension, img1->getWidth());
+   glUniform1i(loc_u_mode, u_mode);
 
    glNormal3f(0, 1, 0);
    glBegin(GL_QUADS);
@@ -140,9 +145,22 @@ void reshape (int w, int h)
    glLoadIdentity();
 }
 
+void keyboard(unsigned char c, int x, int y)
+{
+   if ( c == '0' )
+      u_mode = 0;
+   else if (c == '1' )
+	  u_mode = 1;
+   else if (c == '2' )
+	  u_mode = 2;
+   else
+      u_mode = 1;
+      printf("%d", u_mode);
+}
 
 int main(int argc, char** argv)
 {
+
    glutInit(&argc, argv);
    glutInitDisplayMode (GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
    glutInitWindowSize (600, 600);
@@ -151,6 +169,7 @@ int main(int argc, char** argv)
    glutDisplayFunc(display);
    glutIdleFunc(display);
    glutReshapeFunc(reshape);
+   glutKeyboardFunc(keyboard);
 
    //neste caso, o glsl deve ser inicializado antes do gl para poder chamar o
    //comando  glActiveTexture();
@@ -161,6 +180,8 @@ int main(int argc, char** argv)
    loc_u_texture_0 = shader1->getUniformLoc("texture_0");
    loc_u_texture_1 = shader1->getUniformLoc("texture_1");
    loc_u_bright    = shader1->getUniformLoc("brilho");
+   loc_u_dimension = shader1->getUniformLoc("dim");
+   loc_u_mode      = shader1->getUniformLoc("mode");
 
    //printf(" IDs: %d %d ", loc_u_texture, loc_u_bright);
 

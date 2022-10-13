@@ -107,3 +107,47 @@
 	"Bmp.h"
 	"glsl.h"
 
+1222454298 source:c:\users\admin\desktop\cga\demos\demos_gl 3.x\glsl_5_texture\src\bmp.cpp
+	"Bmp.h"
+	<string.h>
+
+1191315996 c:\users\admin\desktop\cga\demos\demos_gl 3.x\glsl_5_texture\src\bmp.h
+	<stdio.h>
+	<stdlib.h>
+
+1258628610 source:c:\users\admin\desktop\cga\demos\demos_gl 3.x\glsl_5_texture\src\glsl.cpp
+	"glsl.h"
+
+1258628580 c:\users\admin\desktop\cga\demos\demos_gl 3.x\glsl_5_texture\src\glsl.h
+	<GL/glew.h>
+	<GL/glut.h>
+	<stdio.h>
+	<stdlib.h>
+
+1374502282 c:\users\admin\desktop\cga\demos\demos_gl 3.x\glsl_5_texture\include\gl\glew.h
+	<stddef.h>
+	<inttypes.h>
+	<stdint.h>
+	<inttypes.h>
+	<OpenGL/glu.h>
+	<GL/glu.h>
+
+1107052520 c:\users\admin\desktop\cga\demos\demos_gl 3.x\glsl_5_texture\include\gl\glu.h
+	<stddef.h>
+	<GL/gl.h>
+
+1107052520 c:\users\admin\desktop\cga\demos\demos_gl 3.x\glsl_5_texture\include\gl\gl.h
+
+924724106 c:\users\admin\desktop\cga\demos\demos_gl 3.x\glsl_5_texture\include\gl\glut.h
+	<windows.h>
+	<GL/gl.h>
+	<GL/glu.h>
+
+1665691980 source:c:\users\admin\desktop\cga\demos\demos_gl 3.x\glsl_5_texture\src\main.cpp
+	<GL/glew.h>
+	<GL/glut.h>
+	<stdio.h>
+	<math.h>
+	"Bmp.h"
+	"glsl.h"
+
