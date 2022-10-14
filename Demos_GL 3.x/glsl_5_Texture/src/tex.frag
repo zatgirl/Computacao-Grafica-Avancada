@@ -13,7 +13,12 @@ void main()
    vec2 position = gl_TexCoord[0].st;
    vec3 cor;
 
+   ///cube
+   if (mode == 4){
 
+   }
+
+   ///colunas intercalando a textura
    if (mode == 3)
    {
       float fatia = dim/(dim/qtd_parts);
