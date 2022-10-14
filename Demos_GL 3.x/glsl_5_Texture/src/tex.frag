@@ -3,8 +3,9 @@
 uniform sampler2D texture_0; //se nao for inicializada, vale 0, referente a textura 0
 uniform sampler2D texture_1; //se nao for inicializada, vale 0, referente a textura 0
 uniform float     brilho;
-uniform int dim;
+uniform int dim; //dimensao real da imagem
 uniform int mode;
+uniform int qtd_parts;
 varying float  x_coord;
 
 void main()
@@ -13,7 +14,22 @@ void main()
    vec3 cor;
 
 
+   if (mode == 3)
+   {
+      float fatia = dim/(dim/qtd_parts);
 
+      int divisao = (int)((position.x * dim)/fatia);
+
+      float resto = mod(divisao, fatia);
+      float teste_par = mod(resto, 2.0);
+
+      if((teste_par == 0.0)){
+        cor = texture2D(texture_0, position).rgb;
+      }
+      else {
+        cor = texture2D(texture_1, position).rgb;
+      }
+   }
 
    ///grayscale
    if (mode == 2){
@@ -23,18 +39,17 @@ void main()
    ///literalmente 100pixels de cada, horizontal
    if (mode == 1){
       int pos = ((position.y * dim)* dim) + position.x * dim;
-
       int intervalo0 = (int)(pos / 100);
       int intervalo1 = intervalo0 + 100;
-
       float resto;
-      resto = mod(intervalo0, 2.0);
+      resto = mod(intervalo1, 2.0);
 
       if(resto == 0.0){
        cor = texture2D(texture_0, position).rgb;
       }
       else{
        cor = texture2D(texture_1, position).rgb;
+       //cor = vec3(1.0, 0.0, 0.0);
       }
    }
 

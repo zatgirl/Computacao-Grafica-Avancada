@@ -22,7 +22,8 @@
 
 #define RECT_SIZE 10
 
-int u_mode = 0;
+int u_mode = 3;
+int u_qtd_parts = 22;
 
 //variaveis uniform
 GLint loc_u_texture_0;  //local da variavel texture do arquivo tex.frag
@@ -30,6 +31,7 @@ GLint loc_u_texture_1;  //local da variavel texture do arquivo tex.frag
 GLint loc_u_bright;     //local da variavel bright do arquivo tex.frag
 GLint loc_u_dimension;
 GLint loc_u_mode;
+GLint loc_u_qtd_parts;
 
 float brilho = 0;
 
@@ -114,6 +116,8 @@ void display(void)
    glUniform1i(loc_u_texture_1, 1);
    glUniform1i(loc_u_dimension, img1->getWidth());
    glUniform1i(loc_u_mode, u_mode);
+   glUniform1i(loc_u_qtd_parts, u_qtd_parts);
+
 
    glNormal3f(0, 1, 0);
    glBegin(GL_QUADS);
@@ -153,6 +157,10 @@ void keyboard(unsigned char c, int x, int y)
 	  u_mode = 1;
    else if (c == '2' )
 	  u_mode = 2;
+   else if (c == '3' )
+	  u_mode = 3;
+   else if (c == '4' )
+	  u_mode = 4;
    else
       u_mode = 1;
       printf("%d", u_mode);
@@ -182,6 +190,8 @@ int main(int argc, char** argv)
    loc_u_bright    = shader1->getUniformLoc("brilho");
    loc_u_dimension = shader1->getUniformLoc("dim");
    loc_u_mode      = shader1->getUniformLoc("mode");
+   loc_u_qtd_parts = shader1->getUniformLoc("qtd_parts");
+
 
    //printf(" IDs: %d %d ", loc_u_texture, loc_u_bright);
 
