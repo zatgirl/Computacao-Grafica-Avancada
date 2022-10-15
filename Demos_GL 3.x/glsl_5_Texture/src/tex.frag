@@ -15,10 +15,33 @@ void main()
 
    ///cube
    if (mode == 4){
+      float fatia = dim/(dim/qtd_parts);
+
+      int divisaoV = (int)((position.x * dim)/fatia);
+      int divisaoH = (int)((position.y * dim)/fatia);
+
+      float restoV = mod(divisaoV, fatia);
+      float teste_parV = mod(restoV, 2.0);
+
+      float restoH = mod(divisaoH, fatia);
+      float teste_parH = mod(restoH, 2.0);
+
+      if((teste_parV == 0.0)){
+        cor = texture2D(texture_0, position).rgb;
+      }
+      else {
+        cor = texture2D(texture_1, position).rgb;
+      }
+      if((teste_parH == 0.0)){
+       // cor = texture2D(texture_0, position).rgb;
+      }
+      else {
+       //cor = texture2D(texture_1, position).rgb;
+      }
 
    }
 
-   ///colunas intercalando a textura
+   ///colunas intercalando a textura verticalmente
    if (mode == 3)
    {
       float fatia = dim/(dim/qtd_parts);

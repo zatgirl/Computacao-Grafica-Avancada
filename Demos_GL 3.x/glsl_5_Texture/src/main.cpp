@@ -22,7 +22,7 @@
 
 #define RECT_SIZE 10
 
-int u_mode = 3;
+int u_mode = 0;
 int u_qtd_parts = 22;
 
 //variaveis uniform
@@ -45,6 +45,16 @@ Glsl *shader1;
 
 void init_gl(void)
 {
+   float abertura = 45.0;
+   float znear  = 10;
+   float zfar   = 100;
+   float aspect = 1;
+
+   glMatrixMode(GL_PROJECTION);
+   glLoadIdentity( );
+   gluPerspective(abertura, aspect, znear, zfar);
+   glMatrixMode(GL_MODELVIEW);
+
    glClearColor (0.0, 0.0, 0.0, 0.0);
 
    glShadeModel (GL_SMOOTH);
@@ -97,14 +107,13 @@ void init_gl(void)
    glEnable(GL_TEXTURE_2D);
    glBindTexture( GL_TEXTURE_2D, tex2 );
 
-
 }
 
 void display(void)
 {
    Sleep(5);
    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
+/*
    glLoadIdentity();
 
    //muda a intensidade da cor de cada pixel por uma senoide no intervalo [0.2, 4.2]
@@ -133,9 +142,15 @@ void display(void)
 
       glTexCoord2f(0, 1);
       glVertex3f(-2, 2, -10);
-   glEnd();
+   glEnd();*/
+//glTranslated(0, 0, -1);
+   glColor3f(0, 0, 1);
+   glutSolidTeapot(4);
 
    glutSwapBuffers();
+
+
+
   // printf("x");
 }
 
@@ -161,6 +176,8 @@ void keyboard(unsigned char c, int x, int y)
 	  u_mode = 3;
    else if (c == '4' )
 	  u_mode = 4;
+   else if (c == '5' )
+	  u_mode = 5;
    else
       u_mode = 1;
       printf("%d", u_mode);
