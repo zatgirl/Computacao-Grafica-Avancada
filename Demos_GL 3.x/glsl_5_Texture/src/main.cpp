@@ -22,8 +22,9 @@
 
 #define RECT_SIZE 10
 
-int u_mode = 4;
-int u_qtd_parts = 22;
+int u_mode = 5;
+int u_qtd_parts = 10;
+float u_taxa_blur = 0.010;
 
 //variaveis uniform
 GLint loc_u_texture_0;  //local da variavel texture do arquivo tex.frag
@@ -32,6 +33,7 @@ GLint loc_u_bright;     //local da variavel bright do arquivo tex.frag
 GLint loc_u_dimension;
 GLint loc_u_mode;
 GLint loc_u_qtd_parts;
+GLint loc_u_taxa_blur;
 
 float brilho = 0;
 
@@ -105,16 +107,18 @@ void display(void)
    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
    //muda a intensidade da cor de cada pixel por uma senoide no intervalo [0.2, 4.2]
-   float valor = (sin(brilho+=0.01))*1.0;
+   //float valor = (sin(brilho+=0.01))*1.0;
+   float valor  = (brilho+=0.01);
    int texture = (valor>0.5)? 0:1;
 
-   if(u_mode >= 0 && u_mode <= 3){
+   //if(u_mode >= 0 && u_mode <= 5){
        glUniform1f(loc_u_bright, valor);
        glUniform1i(loc_u_texture_0, 0);
        glUniform1i(loc_u_texture_1, 1);
        glUniform1i(loc_u_dimension, img1->getWidth());
        glUniform1i(loc_u_mode, u_mode);
        glUniform1i(loc_u_qtd_parts, u_qtd_parts);
+       glUniform1f(loc_u_taxa_blur, u_taxa_blur);
 
       glNormal3f(0, 1, 0);
       glBegin(GL_QUADS);
@@ -130,9 +134,9 @@ void display(void)
        glTexCoord2f(0, 1);
        glVertex3f(-2, 2, -10);
       glEnd();
-   }
-
-   if(u_mode == 4) {
+//   }
+/*
+   if(u_mode == 3) {
        glMatrixMode(GL_PROJECTION);
        glLoadIdentity( );
        glOrtho(2, -2, -2, 2, 1, 1000);
@@ -143,7 +147,7 @@ void display(void)
                  0, 0, 0,
                  0, 1, 0);
       glutSolidTeapot(1);
-   }
+   }*/
 
    glutSwapBuffers();
 }
@@ -172,9 +176,13 @@ void keyboard(unsigned char c, int x, int y)
 	  u_mode = 4;
    else if (c == '5' )
 	  u_mode = 5;
-   else
-      u_mode = 1;
-      printf("%d", u_mode);
+
+   if( c == '+'){
+      u_taxa_blur += 0.005;
+   }
+   if( c == '-'){
+      u_taxa_blur -= 0.005;
+   }
 }
 
 int main(int argc, char** argv)
@@ -202,6 +210,7 @@ int main(int argc, char** argv)
    loc_u_dimension = shader1->getUniformLoc("dim");
    loc_u_mode      = shader1->getUniformLoc("mode");
    loc_u_qtd_parts = shader1->getUniformLoc("qtd_parts");
+   loc_u_taxa_blur = shader1->getUniformLoc("taxa_blur");
 
 
    //printf(" IDs: %d %d ", loc_u_texture, loc_u_bright);

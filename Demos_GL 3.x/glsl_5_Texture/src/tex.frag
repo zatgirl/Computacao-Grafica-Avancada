@@ -6,16 +6,45 @@ uniform float     brilho;
 uniform int dim; //dimensao real da imagem
 uniform int mode;
 uniform int qtd_parts;
+uniform float taxa_blur;
 varying float  x_coord;
 
 void main()
 {
    vec2 position = gl_TexCoord[0].st;
    vec3 cor;
+   //float taxaBlur = 0.010;
 
-   ///teapot
+   ///linha girando alterando texturas
+   if(mode == 5){
+      float ang = brilho;
+      vec2 rot = vec2(cos(ang), sin(ang));
+      vec2 dist = position - vec2(0.5, 0.5);
+      float dotProduct = dot(rot, dist);
+
+      if(dotProduct > 0.0){
+          cor = texture2D(texture_0, position).rgb;
+      }
+      else{
+          cor = texture2D(texture_1, position).rgb;
+      }
+    }
+
+   ///parametrizar
    if (mode == 4){
+      vec2 posImg;
+      int amostras = 0;
 
+        for(float x = - taxa_blur; x < taxa_blur; x += 0.001){
+          for(float y = - taxa_blur; y < taxa_blur; y += 0.001){
+            if(position.x > taxa_blur && position.y > taxa_blur && position.x < (1.0-taxa_blur) && position.y < (1.0-taxa_blur)){
+                posImg = vec2((position.x - taxa_blur) + x, (position.y - taxa_blur) + y);
+                cor += texture2D(texture_0, posImg).rgb;
+                amostras ++;
+            }
+          }
+        }
+        cor = vec3(cor/amostras);
 
    }
 
