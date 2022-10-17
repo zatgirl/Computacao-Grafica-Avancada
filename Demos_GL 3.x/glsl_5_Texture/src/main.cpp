@@ -22,7 +22,7 @@
 
 #define RECT_SIZE 10
 
-int u_mode = 0;
+int u_mode = 4;
 int u_qtd_parts = 22;
 
 //variaveis uniform
@@ -45,16 +45,6 @@ Glsl *shader1;
 
 void init_gl(void)
 {
-   float abertura = 45.0;
-   float znear  = 10;
-   float zfar   = 100;
-   float aspect = 1;
-
-   glMatrixMode(GL_PROJECTION);
-   glLoadIdentity( );
-   gluPerspective(abertura, aspect, znear, zfar);
-   glMatrixMode(GL_MODELVIEW);
-
    glClearColor (0.0, 0.0, 0.0, 0.0);
 
    glShadeModel (GL_SMOOTH);
@@ -113,45 +103,49 @@ void display(void)
 {
    Sleep(5);
    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-/*
-   glLoadIdentity();
 
    //muda a intensidade da cor de cada pixel por uma senoide no intervalo [0.2, 4.2]
    float valor = (sin(brilho+=0.01))*1.0;
    int texture = (valor>0.5)? 0:1;
 
-   glUniform1f(loc_u_bright, valor);
-   glUniform1i(loc_u_texture_0, 0);
-   glUniform1i(loc_u_texture_1, 1);
-   glUniform1i(loc_u_dimension, img1->getWidth());
-   glUniform1i(loc_u_mode, u_mode);
-   glUniform1i(loc_u_qtd_parts, u_qtd_parts);
+   if(u_mode >= 0 && u_mode <= 3){
+       glUniform1f(loc_u_bright, valor);
+       glUniform1i(loc_u_texture_0, 0);
+       glUniform1i(loc_u_texture_1, 1);
+       glUniform1i(loc_u_dimension, img1->getWidth());
+       glUniform1i(loc_u_mode, u_mode);
+       glUniform1i(loc_u_qtd_parts, u_qtd_parts);
 
+      glNormal3f(0, 1, 0);
+      glBegin(GL_QUADS);
+       glTexCoord2f(0, 0);
+       glVertex3f(-2, -2,  -10);
 
-   glNormal3f(0, 1, 0);
-   glBegin(GL_QUADS);
+       glTexCoord2f(1, 0);
+	   glVertex3f(2, -2,   -10);
 
-      glTexCoord2f(0, 0);
-      glVertex3f(-2, -2,  -10);
+       glTexCoord2f(1, 1);
+       glVertex3f(2, 2,  -10);
 
-      glTexCoord2f(1, 0);
-	  glVertex3f(2, -2,   -10);
+       glTexCoord2f(0, 1);
+       glVertex3f(-2, 2, -10);
+      glEnd();
+   }
 
-      glTexCoord2f(1, 1);
-      glVertex3f(2, 2,  -10);
+   if(u_mode == 4) {
+       glMatrixMode(GL_PROJECTION);
+       glLoadIdentity( );
+       glOrtho(2, -2, -2, 2, 1, 1000);
 
-      glTexCoord2f(0, 1);
-      glVertex3f(-2, 2, -10);
-   glEnd();*/
-//glTranslated(0, 0, -1);
-   glColor3f(0, 0, 1);
-   glutSolidTeapot(4);
+       glMatrixMode(GL_MODELVIEW);
+       glLoadIdentity( );
+       gluLookAt(0, 0, 2,
+                 0, 0, 0,
+                 0, 1, 0);
+      glutSolidTeapot(1);
+   }
 
    glutSwapBuffers();
-
-
-
-  // printf("x");
 }
 
 void reshape (int w, int h)
