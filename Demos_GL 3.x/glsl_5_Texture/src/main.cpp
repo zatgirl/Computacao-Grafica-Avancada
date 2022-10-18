@@ -24,8 +24,8 @@
 
 int u_mouseX;
 int u_mouseY;
-float u_radius = 0.025;
-int u_mode = 4;
+float u_radius = 0.05;
+int u_mode = 6;
 int u_qtd_parts = 10;
 float u_taxa_blur = 0.010;
 

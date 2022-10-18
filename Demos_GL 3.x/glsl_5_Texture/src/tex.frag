@@ -17,22 +17,16 @@ void main()
    vec2 position = gl_TexCoord[0].st;
    vec3 cor = vec3(0.0, 0.0, 0.0);
 
+   ///circulo ao redor do mouse
    if(mode == 6){
-     //vec2 pixel = gl_FragCoord.xy;
-     float center_distance = distance( position, vec2((mouseX*1.0)/dim, (mouseY*1.0)/dim));
+     float distPoint = distance(position, vec2((mouseX*4.0)/600, (mouseY*4.0)/600));
 
-     if( center_distance <= radius ){
-        cor = texture2D(texture_0, position).rgb;
-        cor /= (center_distance*2)/radius;
-       cor = vec3(1.0,0.0,0.0);
+     if(distPoint <= radius){
+        //cor = texture2D(texture_1, position).rgb;
+        cor = vec3(1.0,0.0,0.0);
      }
      else {
         cor = texture2D(texture_0, position).rgb;
-        //float luminance = (cor.x * 0.299) + (cor.y * 0.587) + (cor.z * 0.114);
-        //cor = vec3((luminance * brilho), (brilho * luminance), (brilho * luminance));
-/*        cor.x = t * luminance;
-        cor.y = t * luminance;
-        cor.z = t * luminance;  */
      }
    }
 
@@ -56,8 +50,8 @@ void main()
       vec2 posImg;
       int amostras = 0;
 
-      for(float x = -taxa_blur; x < taxa_blur; x += 0.0000001){
-        for(float y = -taxa_blur; y < taxa_blur; y += 0.0000001){
+      for(float x = -taxa_blur; x < taxa_blur; x += 0.001){
+        for(float y = -taxa_blur; y < taxa_blur; y += 0.0001){
           posImg = vec2(position.x  + x, (position.y + y));
           cor += texture2D(texture_0, posImg).rgb;
           amostras ++;
