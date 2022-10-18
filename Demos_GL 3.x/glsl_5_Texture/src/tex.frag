@@ -7,13 +7,34 @@ uniform int dim; //dimensao real da imagem
 uniform int mode;
 uniform int qtd_parts;
 uniform float taxa_blur;
-varying float  x_coord;
+uniform float radius;
+uniform float mouseX;
+uniform float mouseY;
+varying float x_coord;
 
 void main()
 {
    vec2 position = gl_TexCoord[0].st;
-   vec3 cor;
-   //float taxaBlur = 0.010;
+   vec3 cor = vec3(0.0, 0.0, 0.0);
+
+   if(mode == 6){
+     //vec2 pixel = gl_FragCoord.xy;
+     float center_distance = distance( position, vec2((mouseX*1.0)/dim, (mouseY*1.0)/dim));
+
+     if( center_distance <= radius ){
+        cor = texture2D(texture_0, position).rgb;
+        cor /= (center_distance*2)/radius;
+       cor = vec3(1.0,0.0,0.0);
+     }
+     else {
+        cor = texture2D(texture_0, position).rgb;
+        //float luminance = (cor.x * 0.299) + (cor.y * 0.587) + (cor.z * 0.114);
+        //cor = vec3((luminance * brilho), (brilho * luminance), (brilho * luminance));
+/*        cor.x = t * luminance;
+        cor.y = t * luminance;
+        cor.z = t * luminance;  */
+     }
+   }
 
    ///linha girando alterando texturas
    if(mode == 5){
@@ -30,20 +51,19 @@ void main()
       }
     }
 
-   ///parametrizar
+   ///blur parametrizado
    if (mode == 4){
       vec2 posImg;
       int amostras = 0;
 
-        for(float x = -taxa_blur; x < taxa_blur; x += 0.001){
-          for(float y = -taxa_blur; y < taxa_blur; y += 0.001){
-             posImg = vec2(position.x  + x, (position.y + y));
-             cor += texture2D(texture_0, posImg).rgb;
-             amostras ++;
-          }
+      for(float x = -taxa_blur; x < taxa_blur; x += 0.0000001){
+        for(float y = -taxa_blur; y < taxa_blur; y += 0.0000001){
+          posImg = vec2(position.x  + x, (position.y + y));
+          cor += texture2D(texture_0, posImg).rgb;
+          amostras ++;
         }
-        cor = vec3(cor/amostras);
-
+      }
+      cor /= amostras;
    }
 
    ///colunas intercalando a textura verticalmente
@@ -82,7 +102,6 @@ void main()
       }
       else{
        cor = texture2D(texture_1, position).rgb;
-       //cor = vec3(1.0, 0.0, 0.0);
       }
    }
 

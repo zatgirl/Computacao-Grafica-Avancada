@@ -22,7 +22,10 @@
 
 #define RECT_SIZE 10
 
-int u_mode = 5;
+int u_mouseX;
+int u_mouseY;
+float u_radius = 0.025;
+int u_mode = 4;
 int u_qtd_parts = 10;
 float u_taxa_blur = 0.010;
 
@@ -34,6 +37,9 @@ GLint loc_u_dimension;
 GLint loc_u_mode;
 GLint loc_u_qtd_parts;
 GLint loc_u_taxa_blur;
+GLint loc_u_mouseX;
+GLint loc_u_mouseY;
+GLint loc_u_radius;
 
 float brilho = 0;
 
@@ -119,6 +125,10 @@ void display(void)
        glUniform1i(loc_u_mode, u_mode);
        glUniform1i(loc_u_qtd_parts, u_qtd_parts);
        glUniform1f(loc_u_taxa_blur, u_taxa_blur);
+       glUniform1f(loc_u_radius, u_radius);
+       glUniform1i(loc_u_mouseX, u_mouseX);
+       glUniform1i(loc_u_mouseY, u_mouseY);
+
 
       glNormal3f(0, 1, 0);
       glBegin(GL_QUADS);
@@ -185,9 +195,14 @@ void keyboard(unsigned char c, int x, int y)
    }
 }
 
+void mouse(int x, int y){
+    u_mouseX = 128;
+    u_mouseY = 128;
+    printf("%d, %d\n", u_mouseX, u_mouseY);
+}
+
 int main(int argc, char** argv)
 {
-
    glutInit(&argc, argv);
    glutInitDisplayMode (GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
    glutInitWindowSize (600, 600);
@@ -197,6 +212,7 @@ int main(int argc, char** argv)
    glutIdleFunc(display);
    glutReshapeFunc(reshape);
    glutKeyboardFunc(keyboard);
+   glutMotionFunc(mouse);
 
    //neste caso, o glsl deve ser inicializado antes do gl para poder chamar o
    //comando  glActiveTexture();
@@ -211,6 +227,9 @@ int main(int argc, char** argv)
    loc_u_mode      = shader1->getUniformLoc("mode");
    loc_u_qtd_parts = shader1->getUniformLoc("qtd_parts");
    loc_u_taxa_blur = shader1->getUniformLoc("taxa_blur");
+   loc_u_mouseX    = shader1->getUniformLoc("mouseX");
+   loc_u_mouseY    = shader1->getUniformLoc("mouseY");
+   loc_u_radius    = shader1->getUniformLoc("radius");
 
 
    //printf(" IDs: %d %d ", loc_u_texture, loc_u_bright);
