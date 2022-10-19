@@ -24,8 +24,8 @@
 
 int u_mouseX;
 int u_mouseY;
-float u_radius = 0.05;
-int u_mode = 6;
+float u_radius = 0.055;
+int u_mode = 1;
 int u_qtd_parts = 10;
 float u_taxa_blur = 0.010;
 
@@ -166,7 +166,7 @@ void reshape (int w, int h)
 {
    glMatrixMode (GL_PROJECTION);
    glLoadIdentity();
-   gluPerspective(30, 1, 1, 100);
+   gluPerspective(22, 1, 1, 100);
 
    glMatrixMode(GL_MODELVIEW);
    glLoadIdentity();
@@ -186,6 +186,12 @@ void keyboard(unsigned char c, int x, int y)
 	  u_mode = 4;
    else if (c == '5' )
 	  u_mode = 5;
+   else if (c == '6' )
+      u_mode = 6;
+   else if (c == '7' )
+      u_mode = 7;
+   else if (c == '8' )
+      u_mode = 8;
 
    if( c == '+'){
       u_taxa_blur += 0.005;
@@ -196,9 +202,9 @@ void keyboard(unsigned char c, int x, int y)
 }
 
 void mouse(int x, int y){
-    u_mouseX = 128;
-    u_mouseY = 128;
-    printf("%d, %d\n", u_mouseX, u_mouseY);
+    u_mouseX = x;
+    u_mouseY = 600-y;
+  //  printf("%d, %d\n", u_mouseX, u_mouseY);
 }
 
 int main(int argc, char** argv)

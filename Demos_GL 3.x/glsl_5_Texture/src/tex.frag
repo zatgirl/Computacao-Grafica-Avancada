@@ -8,22 +8,46 @@ uniform int mode;
 uniform int qtd_parts;
 uniform float taxa_blur;
 uniform float radius;
-uniform float mouseX;
-uniform float mouseY;
+uniform int mouseX;
+uniform int mouseY;
 varying float x_coord;
 
 void main()
 {
    vec2 position = gl_TexCoord[0].st;
    vec3 cor = vec3(0.0, 0.0, 0.0);
+   int dim_screen = 600;
+
+   ///zoom no circulo
+   if(mode == 7){
+     vec2 mouse_texCoord = vec2((mouseX*1.0)/dim_screen, (mouseY*1.0)/dim_screen);
+     float distPoint = distance(position, mouse_texCoord);
+     vec2 vetorDir = normalize(mouse_texCoord - position);
+     vec2 scale = vetorDir * position;
+     float zoom = 0.0125;
+
+     if(distPoint < radius){
+        cor = texture2D(texture_0, position).rgb;
+        for (float i = zoom/5; i <= zoom; i += zoom/5){
+           cor += texture2D(texture_0, position + i*scale).rgb;
+           cor /= 2;
+        }
+       //cor /= 10;
+     }
+     else {
+        cor = texture2D(texture_0, position).rgb;
+     }
+     if((distPoint > radius*0.980) && (distPoint < radius*1.010)){
+        cor = vec3(0.0,0.0,0.0);
+     }
+   }
 
    ///circulo ao redor do mouse
    if(mode == 6){
-     float distPoint = distance(position, vec2((mouseX*4.0)/600, (mouseY*4.0)/600));
+     float distPoint = distance(position, vec2((mouseX*1.0)/dim_screen, (mouseY*1.0)/dim_screen));
 
      if(distPoint <= radius){
-        //cor = texture2D(texture_1, position).rgb;
-        cor = vec3(1.0,0.0,0.0);
+        cor = texture2D(texture_1, position).rgb;
      }
      else {
         cor = texture2D(texture_0, position).rgb;
