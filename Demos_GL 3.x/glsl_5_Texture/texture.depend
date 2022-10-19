@@ -231,7 +231,7 @@
 	<GL/gl.h>
 	<GL/glu.h>
 
-1666136191 source:c:\users\admin\documents\github\computacao-grafica-avancada\demos_gl 3.x\glsl_5_texture\src\main.cpp
+1666182358 source:c:\users\admin\documents\github\computacao-grafica-avancada\demos_gl 3.x\glsl_5_texture\src\main.cpp
 	<GL/glew.h>
 	<GL/glut.h>
 	<stdio.h>

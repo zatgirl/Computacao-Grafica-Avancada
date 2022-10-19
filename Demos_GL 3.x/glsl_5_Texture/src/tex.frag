@@ -10,7 +10,9 @@ uniform float taxa_blur;
 uniform float radius;
 uniform int mouseX;
 uniform int mouseY;
+uniform float zoom;
 varying float x_coord;
+
 
 void main()
 {
@@ -24,21 +26,48 @@ void main()
      float distPoint = distance(position, mouse_texCoord);
      vec2 vetorDir = normalize(mouse_texCoord - position);
      vec2 scale = vetorDir * position;
-     float zoom = 0.0125;
 
      if(distPoint < radius){
-        cor = texture2D(texture_0, position).rgb;
-        for (float i = zoom/5; i <= zoom; i += zoom/5){
+
+        float zoomFactor = 1 + zoom;
+        vec2 vectorDir = (position - mouse_texCoord);
+        cor = texture2D(texture_0, (mouse_texCoord + vectorDir*zoomFactor)).rgb;
+
+        //cor = texture2D(texture_0, position).rgb;
+                /*
+        for (float i = zoom*0.6; i <= zoom; i += zoom*0.6){
            cor += texture2D(texture_0, position + i*scale).rgb;
            cor /= 2;
-        }
-       //cor /= 10;
+        }*/
+        //cor /= 0.6;
      }
      else {
-        cor = texture2D(texture_0, position).rgb;
+        vec2 posImg;
+        int amostras = 0;
+
+        taxa_blur = (taxa_blur * distPoint);
+        for(float x = -taxa_blur; x < taxa_blur; x += 0.001){
+            for(float y = -taxa_blur; y < taxa_blur; y += 0.001){
+            posImg = vec2(position.x  + x, (position.y + y));
+            cor += texture2D(texture_0, posImg).rgb;
+            amostras ++;
+            }
+        }
+        cor /= amostras;
      }
      if((distPoint > radius*0.980) && (distPoint < radius*1.010)){
         cor = vec3(0.0,0.0,0.0);
+     }
+     if(distPoint < radius){
+         if((position.y - mouse_texCoord.y) > -0.001 && (position.y - mouse_texCoord.y < 0.001)){
+            if((distPoint > 0.01)){
+                cor = vec3(0.0,0.0,0.0);
+            }
+         } else if ((position.x - mouse_texCoord.x) > -0.001 && (position.x - mouse_texCoord.x < 0.001)){
+            if((distPoint > 0.01)){
+                cor = vec3(0.0,0.0,0.0);
+            }
+         }
      }
    }
 

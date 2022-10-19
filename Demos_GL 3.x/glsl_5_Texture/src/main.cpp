@@ -22,12 +22,13 @@
 
 #define RECT_SIZE 10
 
-int u_mouseX;
-int u_mouseY;
+int u_mouseX = 300;
+int u_mouseY = 300;
 float u_radius = 0.055;
-int u_mode = 1;
+int u_mode = 7;
 int u_qtd_parts = 10;
 float u_taxa_blur = 0.010;
+float u_zoom = 0.03;
 
 //variaveis uniform
 GLint loc_u_texture_0;  //local da variavel texture do arquivo tex.frag
@@ -40,6 +41,7 @@ GLint loc_u_taxa_blur;
 GLint loc_u_mouseX;
 GLint loc_u_mouseY;
 GLint loc_u_radius;
+GLint loc_u_zoom;
 
 float brilho = 0;
 
@@ -128,7 +130,7 @@ void display(void)
        glUniform1f(loc_u_radius, u_radius);
        glUniform1i(loc_u_mouseX, u_mouseX);
        glUniform1i(loc_u_mouseY, u_mouseY);
-
+       glUniform1f(loc_u_zoom, u_zoom);
 
       glNormal3f(0, 1, 0);
       glBegin(GL_QUADS);
@@ -193,11 +195,27 @@ void keyboard(unsigned char c, int x, int y)
    else if (c == '8' )
       u_mode = 8;
 
-   if( c == '+'){
-      u_taxa_blur += 0.005;
+   if( u_mode == 4){
+       if( c == '+'){
+          u_taxa_blur += 0.005;
+       }
+       if( c == '-'){
+          u_taxa_blur -= 0.005;
+       }
    }
-   if( c == '-'){
-      u_taxa_blur -= 0.005;
+   if( u_mode == 7){
+       if( c == '+'){
+          u_zoom += 0.01;
+       }
+       if( c == '-'){
+          u_zoom -= 0.01;
+       }
+       if( c == 'a'){
+          u_taxa_blur += 0.005;
+       }
+       if( c == 'd'){
+          u_taxa_blur -= 0.005;
+       }
    }
 }
 
@@ -236,6 +254,7 @@ int main(int argc, char** argv)
    loc_u_mouseX    = shader1->getUniformLoc("mouseX");
    loc_u_mouseY    = shader1->getUniformLoc("mouseY");
    loc_u_radius    = shader1->getUniformLoc("radius");
+   loc_u_zoom      = shader1->getUniformLoc("zoom");
 
 
    //printf(" IDs: %d %d ", loc_u_texture, loc_u_bright);

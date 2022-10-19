@@ -1,1 +1,65 @@
-﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Platforms\Win32\PlatformToolsets\v141\Toolset.targets(34,5): error MSB8036: The Windows SDK version 7.0 was not found. Install the required version of Windows SDK or change the SDK version in the project property pages or by right-clicking the solution and selecting "Retarget solution".
+﻿  glslprogram.cpp
+  GLUtils.cpp
+  main.cpp
+  TessellatedQuad.cpp
+C:\Users\Admin\Documents\GitHub\Computacao-Grafica-Avancada\Demos_GL 4.x\utils\GLUtils.cpp(10,68): warning C4100: 'param': parâmetro formal não referenciado
+C:\Users\Admin\Documents\GitHub\Computacao-Grafica-Avancada\Demos_GL 4.x\utils\GLUtils.cpp(10,27): warning C4100: 'length': parâmetro formal não referenciado
+C:\Users\Admin\Documents\GitHub\Computacao-Grafica-Avancada\Demos_GL 4.x\include\glm\detail\type_vec2.hpp(64,22): warning C4201: extensão não padrão usada: struct/union sem nome (compilando arquivo de origem ..\..\utils\glslprogram.cpp)
+C:\Users\Admin\Documents\GitHub\Computacao-Grafica-Avancada\Demos_GL 4.x\include\glm\detail\type_vec2.hpp(242): message : consulte a referência à instanciação 'glm::tvec2<T,P>' do modelo da classe que está sendo compilada (compilando arquivo de origem ..\..\utils\glslprogram.cpp)
+C:\Users\Admin\Documents\GitHub\Computacao-Grafica-Avancada\Demos_GL 4.x\include\glm\detail\type_vec2.hpp(65,22): warning C4201: extensão não padrão usada: struct/union sem nome (compilando arquivo de origem ..\..\utils\glslprogram.cpp)
+C:\Users\Admin\Documents\GitHub\Computacao-Grafica-Avancada\Demos_GL 4.x\include\glm\detail\type_vec2.hpp(66,22): warning C4201: extensão não padrão usada: struct/union sem nome (compilando arquivo de origem ..\..\utils\glslprogram.cpp)
+C:\Users\Admin\Documents\GitHub\Computacao-Grafica-Avancada\Demos_GL 4.x\include\glm\detail\type_vec2.hpp(64,22): warning C4201: extensão não padrão usada: struct/union sem nome (compilando arquivo de origem src\TessellatedQuad.cpp)
+C:\Users\Admin\Documents\GitHub\Computacao-Grafica-Avancada\Demos_GL 4.x\include\glm\detail\type_vec2.hpp(242): message : consulte a referência à instanciação 'glm::tvec2<T,P>' do modelo da classe que está sendo compilada (compilando arquivo de origem src\TessellatedQuad.cpp)
+C:\Users\Admin\Documents\GitHub\Computacao-Grafica-Avancada\Demos_GL 4.x\include\glm\detail\type_vec2.hpp(65,22): warning C4201: extensão não padrão usada: struct/union sem nome (compilando arquivo de origem src\TessellatedQuad.cpp)
+C:\Users\Admin\Documents\GitHub\Computacao-Grafica-Avancada\Demos_GL 4.x\include\glm\detail\type_vec2.hpp(66,22): warning C4201: extensão não padrão usada: struct/union sem nome (compilando arquivo de origem src\TessellatedQuad.cpp)
+C:\Users\Admin\Documents\GitHub\Computacao-Grafica-Avancada\Demos_GL 4.x\include\glm\detail\type_vec3.hpp(64,25): warning C4201: extensão não padrão usada: struct/union sem nome (compilando arquivo de origem ..\..\utils\glslprogram.cpp)
+C:\Users\Admin\Documents\GitHub\Computacao-Grafica-Avancada\Demos_GL 4.x\include\glm\detail\type_vec3.hpp(264): message : consulte a referência à instanciação 'glm::tvec3<T,P>' do modelo da classe que está sendo compilada (compilando arquivo de origem ..\..\utils\glslprogram.cpp)
+C:\Users\Admin\Documents\GitHub\Computacao-Grafica-Avancada\Demos_GL 4.x\include\glm\detail\type_vec3.hpp(65,25): warning C4201: extensão não padrão usada: struct/union sem nome (compilando arquivo de origem ..\..\utils\glslprogram.cpp)
+C:\Users\Admin\Documents\GitHub\Computacao-Grafica-Avancada\Demos_GL 4.x\include\glm\detail\type_vec3.hpp(66,25): warning C4201: extensão não padrão usada: struct/union sem nome (compilando arquivo de origem ..\..\utils\glslprogram.cpp)
+C:\Users\Admin\Documents\GitHub\Computacao-Grafica-Avancada\Demos_GL 4.x\include\glm\detail\type_vec3.hpp(64,25): warning C4201: extensão não padrão usada: struct/union sem nome (compilando arquivo de origem src\TessellatedQuad.cpp)
+C:\Users\Admin\Documents\GitHub\Computacao-Grafica-Avancada\Demos_GL 4.x\include\glm\detail\type_vec3.hpp(264): message : consulte a referência à instanciação 'glm::tvec3<T,P>' do modelo da classe que está sendo compilada (compilando arquivo de origem src\TessellatedQuad.cpp)
+C:\Users\Admin\Documents\GitHub\Computacao-Grafica-Avancada\Demos_GL 4.x\include\glm\detail\type_vec3.hpp(65,25): warning C4201: extensão não padrão usada: struct/union sem nome (compilando arquivo de origem src\TessellatedQuad.cpp)
+C:\Users\Admin\Documents\GitHub\Computacao-Grafica-Avancada\Demos_GL 4.x\include\glm\detail\type_vec3.hpp(66,25): warning C4201: extensão não padrão usada: struct/union sem nome (compilando arquivo de origem src\TessellatedQuad.cpp)
+C:\Users\Admin\Documents\GitHub\Computacao-Grafica-Avancada\Demos_GL 4.x\include\glm\detail\type_vec4.hpp(118,28): warning C4201: extensão não padrão usada: struct/union sem nome (compilando arquivo de origem ..\..\utils\glslprogram.cpp)
+C:\Users\Admin\Documents\GitHub\Computacao-Grafica-Avancada\Demos_GL 4.x\include\glm\detail\type_vec4.hpp(364): message : consulte a referência à instanciação 'glm::tvec4<T,P>' do modelo da classe que está sendo compilada (compilando arquivo de origem ..\..\utils\glslprogram.cpp)
+C:\Users\Admin\Documents\GitHub\Computacao-Grafica-Avancada\Demos_GL 4.x\include\glm\detail\type_vec4.hpp(119,29): warning C4201: extensão não padrão usada: struct/union sem nome (compilando arquivo de origem ..\..\utils\glslprogram.cpp)
+C:\Users\Admin\Documents\GitHub\Computacao-Grafica-Avancada\Demos_GL 4.x\include\glm\detail\type_vec4.hpp(120,29): warning C4201: extensão não padrão usada: struct/union sem nome (compilando arquivo de origem ..\..\utils\glslprogram.cpp)
+C:\Users\Admin\Documents\GitHub\Computacao-Grafica-Avancada\Demos_GL 4.x\include\glm\detail\type_vec4.hpp(118,28): warning C4201: extensão não padrão usada: struct/union sem nome (compilando arquivo de origem src\TessellatedQuad.cpp)
+C:\Users\Admin\Documents\GitHub\Computacao-Grafica-Avancada\Demos_GL 4.x\include\glm\detail\type_vec4.hpp(364): message : consulte a referência à instanciação 'glm::tvec4<T,P>' do modelo da classe que está sendo compilada (compilando arquivo de origem src\TessellatedQuad.cpp)
+C:\Users\Admin\Documents\GitHub\Computacao-Grafica-Avancada\Demos_GL 4.x\include\glm\detail\type_vec4.hpp(119,29): warning C4201: extensão não padrão usada: struct/union sem nome (compilando arquivo de origem src\TessellatedQuad.cpp)
+C:\Users\Admin\Documents\GitHub\Computacao-Grafica-Avancada\Demos_GL 4.x\include\glm\detail\type_vec4.hpp(120,29): warning C4201: extensão não padrão usada: struct/union sem nome (compilando arquivo de origem src\TessellatedQuad.cpp)
+C:\Users\Admin\Documents\GitHub\Computacao-Grafica-Avancada\Demos_GL 4.x\include\glm\detail\type_vec2.hpp(64,22): warning C4201: extensão não padrão usada: struct/union sem nome (compilando arquivo de origem src\main.cpp)
+C:\Users\Admin\Documents\GitHub\Computacao-Grafica-Avancada\Demos_GL 4.x\include\glm\detail\type_vec2.hpp(242): message : consulte a referência à instanciação 'glm::tvec2<T,P>' do modelo da classe que está sendo compilada (compilando arquivo de origem src\main.cpp)
+C:\Users\Admin\Documents\GitHub\Computacao-Grafica-Avancada\Demos_GL 4.x\include\glm\detail\type_vec2.hpp(65,22): warning C4201: extensão não padrão usada: struct/union sem nome (compilando arquivo de origem src\main.cpp)
+C:\Users\Admin\Documents\GitHub\Computacao-Grafica-Avancada\Demos_GL 4.x\include\glm\detail\type_vec2.hpp(66,22): warning C4201: extensão não padrão usada: struct/union sem nome (compilando arquivo de origem src\main.cpp)
+C:\Users\Admin\Documents\GitHub\Computacao-Grafica-Avancada\Demos_GL 4.x\include\glm\detail\type_vec3.hpp(64,25): warning C4201: extensão não padrão usada: struct/union sem nome (compilando arquivo de origem src\main.cpp)
+C:\Users\Admin\Documents\GitHub\Computacao-Grafica-Avancada\Demos_GL 4.x\include\glm\detail\type_vec3.hpp(264): message : consulte a referência à instanciação 'glm::tvec3<T,P>' do modelo da classe que está sendo compilada (compilando arquivo de origem src\main.cpp)
+C:\Users\Admin\Documents\GitHub\Computacao-Grafica-Avancada\Demos_GL 4.x\include\glm\detail\type_vec3.hpp(65,25): warning C4201: extensão não padrão usada: struct/union sem nome (compilando arquivo de origem src\main.cpp)
+C:\Users\Admin\Documents\GitHub\Computacao-Grafica-Avancada\Demos_GL 4.x\include\glm\detail\type_vec3.hpp(66,25): warning C4201: extensão não padrão usada: struct/union sem nome (compilando arquivo de origem src\main.cpp)
+C:\Users\Admin\Documents\GitHub\Computacao-Grafica-Avancada\Demos_GL 4.x\include\glm\detail\type_vec4.hpp(118,28): warning C4201: extensão não padrão usada: struct/union sem nome (compilando arquivo de origem src\main.cpp)
+C:\Users\Admin\Documents\GitHub\Computacao-Grafica-Avancada\Demos_GL 4.x\include\glm\detail\type_vec4.hpp(364): message : consulte a referência à instanciação 'glm::tvec4<T,P>' do modelo da classe que está sendo compilada (compilando arquivo de origem src\main.cpp)
+C:\Users\Admin\Documents\GitHub\Computacao-Grafica-Avancada\Demos_GL 4.x\include\glm\detail\type_vec4.hpp(119,29): warning C4201: extensão não padrão usada: struct/union sem nome (compilando arquivo de origem src\main.cpp)
+C:\Users\Admin\Documents\GitHub\Computacao-Grafica-Avancada\Demos_GL 4.x\include\glm\detail\type_vec4.hpp(120,29): warning C4201: extensão não padrão usada: struct/union sem nome (compilando arquivo de origem src\main.cpp)
+C:\Users\Admin\Documents\GitHub\Computacao-Grafica-Avancada\Demos_GL 4.x\utils\glslprogram.h(56,34): warning C4100: 'other': parâmetro formal não referenciado (compilando arquivo de origem ..\..\utils\glslprogram.cpp)
+C:\Users\Admin\Documents\GitHub\Computacao-Grafica-Avancada\Demos_GL 4.x\utils\glslprogram.h(57,45): warning C4100: 'other': parâmetro formal não referenciado (compilando arquivo de origem ..\..\utils\glslprogram.cpp)
+C:\Users\Admin\Documents\GitHub\Computacao-Grafica-Avancada\Demos_GL 4.x\utils\glslprogram.h(56,34): warning C4100: 'other': parâmetro formal não referenciado (compilando arquivo de origem src\TessellatedQuad.cpp)
+C:\Users\Admin\Documents\GitHub\Computacao-Grafica-Avancada\Demos_GL 4.x\utils\glslprogram.h(57,45): warning C4100: 'other': parâmetro formal não referenciado (compilando arquivo de origem src\TessellatedQuad.cpp)
+C:\Users\Admin\Documents\GitHub\Computacao-Grafica-Avancada\Demos_GL 4.x\utils\glslprogram.h(56,34): warning C4100: 'other': parâmetro formal não referenciado (compilando arquivo de origem src\main.cpp)
+C:\Users\Admin\Documents\GitHub\Computacao-Grafica-Avancada\Demos_GL 4.x\utils\glslprogram.h(57,45): warning C4100: 'other': parâmetro formal não referenciado (compilando arquivo de origem src\main.cpp)
+C:\Users\Admin\Documents\GitHub\Computacao-Grafica-Avancada\Demos_GL 4.x\demos\glsl40_tessellation_basic\src\main.cpp(56,24): warning C4100: 'error': parâmetro formal não referenciado
+C:\Users\Admin\Documents\GitHub\Computacao-Grafica-Avancada\Demos_GL 4.x\demos\glsl40_tessellation_basic\src\main.cpp(62,30): warning C4459: a declaração de 'window' oculta uma declaração global
+C:\Users\Admin\Documents\GitHub\Computacao-Grafica-Avancada\Demos_GL 4.x\demos\glsl40_tessellation_basic\src\main.cpp(31,13): message : consulte a declaração de 'window'
+C:\Users\Admin\Documents\GitHub\Computacao-Grafica-Avancada\Demos_GL 4.x\demos\glsl40_tessellation_basic\src\main.cpp(62,77): warning C4100: 'mods': parâmetro formal não referenciado
+C:\Users\Admin\Documents\GitHub\Computacao-Grafica-Avancada\Demos_GL 4.x\demos\glsl40_tessellation_basic\src\main.cpp(62,51): warning C4100: 'scancode': parâmetro formal não referenciado
+C:\Users\Admin\Documents\GitHub\Computacao-Grafica-Avancada\Demos_GL 4.x\demos\glsl40_tessellation_basic\src\main.cpp(135,50): warning C4316: 'TessellatedQuad': objeto alocado na pilha pode não estar alinhado 16
+C:\Users\Admin\Documents\GitHub\Computacao-Grafica-Avancada\Demos_GL 4.x\demos\glsl40_tessellation_basic\src\TessellatedQuad.cpp(55,37): warning C4100: 'deltaTime': parâmetro formal não referenciado
+C:\Users\Admin\Documents\GitHub\Computacao-Grafica-Avancada\Demos_GL 4.x\demos\glsl40_tessellation_basic\src\TessellatedQuad.cpp(183,41): warning C4100: 'y': parâmetro formal não referenciado
+C:\Users\Admin\Documents\GitHub\Computacao-Grafica-Avancada\Demos_GL 4.x\demos\glsl40_tessellation_basic\src\TessellatedQuad.cpp(183,34): warning C4100: 'x': parâmetro formal não referenciado
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflita com uso de outras bibliotecas; use /NODEFAULTLIB:library
+  glsl40_tessellation_basic.vcxproj -> C:\Users\Admin\Documents\GitHub\Computacao-Grafica-Avancada\Demos_GL 4.x\bin\glsl40_tessellation_basic.exe
+  compying shaders
+  C:\Users\Admin\Documents\GitHub\Computacao-Grafica-Avancada\Demos_GL 4.x\demos\glsl40_tessellation_basic\shader\glsl40_basic_tess.frag
+  C:\Users\Admin\Documents\GitHub\Computacao-Grafica-Avancada\Demos_GL 4.x\demos\glsl40_tessellation_basic\shader\glsl40_basic_tess.tcs
+  C:\Users\Admin\Documents\GitHub\Computacao-Grafica-Avancada\Demos_GL 4.x\demos\glsl40_tessellation_basic\shader\glsl40_basic_tess.tes
+  C:\Users\Admin\Documents\GitHub\Computacao-Grafica-Avancada\Demos_GL 4.x\demos\glsl40_tessellation_basic\shader\glsl40_basic_tess.vert
+  4 arquivo(s) copiado(s)
